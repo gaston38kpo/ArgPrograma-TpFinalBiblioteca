@@ -1,7 +1,6 @@
 package com.ap.librarymanagement.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -19,20 +18,20 @@ public class Book {
     private Integer copies;
     private Integer borrowedCopies;
     private Integer remainingCopies;
-    private Boolean isDeleted;
+    private Boolean isEnabled;
     @OneToOne
     private Author author;
     @OneToOne
     private Editorial editorial;
 
-    public Book(Long isbn, String title, Integer year, Integer copies, Integer borrowedCopies, Integer remainingCopies, Boolean isDeleted, Author author, Editorial editorial) {
+    public Book(Long isbn, String title, Integer year, Integer copies, Integer borrowedCopies, Integer remainingCopies, Author author, Editorial editorial) {
         this.isbn = isbn;
         this.title = title;
         this.year = year;
         this.copies = copies;
         this.borrowedCopies = borrowedCopies;
         this.remainingCopies = remainingCopies;
-        this.isDeleted = isDeleted;
+        this.isEnabled = true;
         this.author = author;
         this.editorial = editorial;
     }
