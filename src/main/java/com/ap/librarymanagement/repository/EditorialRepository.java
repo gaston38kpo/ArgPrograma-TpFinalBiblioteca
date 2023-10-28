@@ -1,4 +1,7 @@
 package com.ap.librarymanagement.repository;
 
-public interface EditorialRepository {
+import com.ap.librarymanagement.model.Editorial;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface EditorialRepository extends JpaRepository<Editorial, Long> {
 }
