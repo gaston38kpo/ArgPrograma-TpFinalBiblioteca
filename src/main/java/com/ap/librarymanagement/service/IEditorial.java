@@ -10,11 +10,13 @@ public interface IEditorial {
 
     String save(EditorialDto editorialDto);
 
-    EditorialDto find(String surname);
+    EditorialDto find(String name);
 
     EditorialDto find(Long id);
 
     String update(Long id, EditorialDto editorialDto);
 
     String delete(Long id);
+
+    String restore(Long id);
 }

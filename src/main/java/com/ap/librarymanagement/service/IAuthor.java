@@ -10,11 +10,13 @@ public interface IAuthor {
 
     String save(AuthorDto authorDto);
 
-    AuthorDto find(String surname);
+    AuthorDto find(String name);
 
     AuthorDto find(Long id);
 
     String update(Long id, AuthorDto authorDto);
 
     String delete(Long id);
+
+    String restore(Long id);
 }

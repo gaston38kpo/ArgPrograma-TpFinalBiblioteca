@@ -10,11 +10,13 @@ public interface IBook {
 
     String save(BookDto bookDto);
 
-    BookDto find(String surname);
+    BookDto find(String title);
 
     BookDto find(Long id);
 
     String update(Long id, BookDto bookDto);
 
     String delete(Long id);
+
+    String restore(Long id);
 }
