@@ -3,6 +3,7 @@ package com.ap.librarymanagement.model;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -10,15 +11,11 @@ import java.util.Set;
 @Entity
 @Data
 @AllArgsConstructor
-@Table(name = "Editorial")
+@NoArgsConstructor
 public class Editorial {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private Boolean isEnabled;
-
-    public Editorial() {
-        this.isEnabled = true;
-    }
+    private Boolean isEnabled = true;
 }

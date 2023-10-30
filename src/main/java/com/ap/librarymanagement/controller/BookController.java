@@ -63,15 +63,13 @@ public class BookController {
         {
             "id": 3,
             "name": "David Brown",
-            "isEnabled": true,
-            "bookList": []
+            "isEnabled": true
         }
     ],
     "editorial": {
         "id": 2,
         "name": "Mystery Publications",
-        "isEnabled": true,
-        "bookList": []
+        "isEnabled": true
     }
 }
     */

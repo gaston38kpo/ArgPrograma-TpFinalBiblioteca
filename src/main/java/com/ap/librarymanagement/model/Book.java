@@ -3,6 +3,7 @@ package com.ap.librarymanagement.model;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -10,7 +11,7 @@ import java.util.Set;
 @Entity
 @Data
 @AllArgsConstructor
-@Table(name = "Book")
+@NoArgsConstructor
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,16 +22,12 @@ public class Book {
     private Integer copies;
     private Integer borrowedCopies;
     private Integer remainingCopies;
-    private Boolean isEnabled;
+    private Boolean isEnabled = true;
 
     @ManyToMany
-    private Set<Author> authorList;
+    private Set<Author> authorList = new HashSet<>();
 
     @ManyToOne
     private Editorial editorial;
 
-    public Book() {
-        this.isEnabled = true;
-        this.authorList = new HashSet<>();
-    }
 }
