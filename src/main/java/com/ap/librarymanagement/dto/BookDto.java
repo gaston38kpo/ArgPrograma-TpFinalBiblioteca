@@ -5,11 +5,12 @@ import com.ap.librarymanagement.model.Editorial;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Builder
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 public class BookDto {
     private Long id;
@@ -20,6 +21,10 @@ public class BookDto {
     private Integer borrowedCopies;
     private Integer remainingCopies;
     private Boolean isEnabled;
-    private Author author;
+    private Set<Author> authorList;
     private Editorial editorial;
+
+    public BookDto() {
+        this.authorList = new HashSet<>();
+    }
 }

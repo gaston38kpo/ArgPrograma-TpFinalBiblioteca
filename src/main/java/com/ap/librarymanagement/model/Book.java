@@ -1,16 +1,20 @@
 package com.ap.librarymanagement.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
-@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "Book")
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "book_id")
     private Long id;
     private Long isbn;
     private String title;
@@ -19,20 +23,23 @@ public class Book {
     private Integer borrowedCopies;
     private Integer remainingCopies;
     private Boolean isEnabled;
-    @OneToOne
-    private Author author;
-    @OneToOne
+
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            })
+    @JoinTable(name = "book_author",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id"))
+    private Set<Author> authorList;
+
+    @ManyToOne
+    @JoinColumn(name = "editorial_id")
     private Editorial editorial;
 
-    public Book(Long isbn, String title, Integer year, Integer copies, Integer borrowedCopies, Integer remainingCopies, Author author, Editorial editorial) {
-        this.isbn = isbn;
-        this.title = title;
-        this.year = year;
-        this.copies = copies;
-        this.borrowedCopies = borrowedCopies;
-        this.remainingCopies = remainingCopies;
+    public Book() {
         this.isEnabled = true;
-        this.author = author;
-        this.editorial = editorial;
+        this.authorList = new HashSet<>();
     }
 }

@@ -1,28 +1,25 @@
 package com.ap.librarymanagement.service;
 
 import com.ap.librarymanagement.dto.BookDto;
-import com.ap.librarymanagement.mapper.MapperAuthor;
 import com.ap.librarymanagement.mapper.MapperBook;
-import com.ap.librarymanagement.model.Author;
 import com.ap.librarymanagement.model.Book;
 import com.ap.librarymanagement.repository.BookRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class BookImpl implements IBook {
 
-    private BookRepository bookRepository;
+    private final BookRepository bookRepository;
 
     @Override
     public List<BookDto> findAll() {
         return bookRepository.findAll().stream()
                 .map(MapperBook::toDto)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     @Override
@@ -55,7 +52,7 @@ public class BookImpl implements IBook {
         book.setBorrowedCopies(bookDto.getBorrowedCopies());
         book.setRemainingCopies(bookDto.getRemainingCopies());
         book.setIsEnabled(bookDto.getIsEnabled());
-        book.setAuthor(bookDto.getAuthor());
+        book.setAuthorList(bookDto.getAuthorList());
         book.setEditorial(bookDto.getEditorial());
 
         bookRepository.save(book);

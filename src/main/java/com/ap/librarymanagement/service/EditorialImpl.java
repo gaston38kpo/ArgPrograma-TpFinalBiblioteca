@@ -1,9 +1,7 @@
 package com.ap.librarymanagement.service;
 
 import com.ap.librarymanagement.dto.EditorialDto;
-import com.ap.librarymanagement.mapper.MapperAuthor;
 import com.ap.librarymanagement.mapper.MapperEditorial;
-import com.ap.librarymanagement.model.Author;
 import com.ap.librarymanagement.model.Editorial;
 import com.ap.librarymanagement.repository.EditorialRepository;
 import lombok.RequiredArgsConstructor;
