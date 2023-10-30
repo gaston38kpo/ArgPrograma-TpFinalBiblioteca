@@ -1,8 +1,13 @@
 package com.ap.librarymanagement.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -19,10 +24,11 @@ public class Author {
     private String name;
     private Boolean isEnabled;
 
-    @ManyToMany(mappedBy = "authorList")
-    private Set<Book> bookList = new HashSet<>();
+    @ManyToMany
+    private Set<Book> bookList;
 
     public Author() {
         this.isEnabled = true;
+        this.bookList = new HashSet<>();
     }
 }

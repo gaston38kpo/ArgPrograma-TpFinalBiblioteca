@@ -57,7 +57,27 @@ public class BookController {
     }
     /* POST http://localhost:8080/books/save
 {
-    "name": "Book de prueba 1"
+    "isbn": 444,
+    "title": "new",
+    "year": 2010,
+    "copies": 12,
+    "borrowedCopies": 3,
+    "remainingCopies": 7,
+    "isEnabled": true,
+    "authorList": [
+        {
+            "id": 3,
+            "name": "David Brown",
+            "isEnabled": true,
+            "bookList": []
+        }
+    ],
+    "editorial": {
+        "id": 2,
+        "name": "Mystery Publications",
+        "isEnabled": true,
+        "bookList": []
+    }
 }
     */
 
@@ -88,7 +108,30 @@ public class BookController {
     }
     /* PUT http://localhost:8080/books/update?id=1
 {
-    "name": "John"
+    "isbn": 1234,
+    "title": "edited4",
+    "year": 2001,
+    "copies": 212,
+    "borrowedCopies": 62,
+    "remainingCopies": 125,
+    "authorList": [
+        {
+            "id": 3,
+            "name": "David Brown",
+            "isEnabled": true
+        },
+        {
+            "id": 4,
+            "name": "Emily Davis",
+            "isEnabled": true,
+            "bookList": []
+        }
+    ],
+    "editorial": {
+        "id": 2,
+        "name": "Mystery Publications",
+        "isEnabled": true
+    }
 }
     */
 
