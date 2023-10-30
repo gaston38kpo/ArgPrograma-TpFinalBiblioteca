@@ -14,7 +14,6 @@ import java.util.Set;
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "book_id")
     private Long id;
     private Long isbn;
     private String title;
@@ -25,13 +24,9 @@ public class Book {
     private Boolean isEnabled;
 
     @ManyToMany
-    @JoinTable(name = "book_author",
-            joinColumns = @JoinColumn(name = "book_id"),
-            inverseJoinColumns = @JoinColumn(name = "author_id"))
     private Set<Author> authorList;
 
     @ManyToOne
-    @JoinColumn(name = "editorial_id")
     private Editorial editorial;
 
     public Book() {

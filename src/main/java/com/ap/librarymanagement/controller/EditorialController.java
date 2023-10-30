@@ -17,11 +17,6 @@ public class EditorialController {
 
     private final EditorialImpl editorialService;
 
-    @GetMapping("/testBookList")
-    public ResponseEntity<Integer> sizeOfBookList() {
-        return ResponseEntity.ok(editorialService.findAll().get(0).getBookList().size());
-    }
-
     @GetMapping("/")
     public ResponseEntity<List<EditorialDto>> getAllEditorials() {
         return ResponseEntity.ok(editorialService.findAll());
@@ -57,7 +52,7 @@ public class EditorialController {
     }
     /* POST http://localhost:8080/editorials/save
 {
-    "name": "Editorial de prueba 1"
+    "name": "test create"
 }
     */
 
@@ -80,7 +75,7 @@ public class EditorialController {
     }
     /* PUT http://localhost:8080/editorials/update?id=1
 {
-    "name": "John"
+    "name": "test update"
 }
     */
 

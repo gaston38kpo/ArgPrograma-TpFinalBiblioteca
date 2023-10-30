@@ -16,5 +16,4 @@ public class EditorialDto {
     private Long id;
     private String name;
     private Boolean isEnabled;
-    private Set<Book> bookList;
 }

@@ -17,11 +17,6 @@ public class BookController {
 
     private final BookImpl bookService;
 
-    @GetMapping("/testAuthorList")
-    public ResponseEntity<Integer> sizeOfBookList() {
-        return ResponseEntity.ok(bookService.findAll().get(0).getAuthorList().size());
-    }
-
     @GetMapping("/")
     public ResponseEntity<List<BookDto>> getAllBooks() {
         return ResponseEntity.ok(bookService.findAll());

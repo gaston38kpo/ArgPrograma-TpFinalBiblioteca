@@ -19,16 +19,11 @@ import java.util.Set;
 public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "author_id")
     private Long id;
     private String name;
     private Boolean isEnabled;
 
-    @ManyToMany
-    private Set<Book> bookList;
-
     public Author() {
         this.isEnabled = true;
-        this.bookList = new HashSet<>();
     }
 }
