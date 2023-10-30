@@ -2,7 +2,6 @@ package com.ap.librarymanagement.controller;
 
 
 import com.ap.librarymanagement.dto.EditorialDto;
-import com.ap.librarymanagement.dto.EditorialDto;
 import com.ap.librarymanagement.service.EditorialImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -87,39 +86,21 @@ public class EditorialController {
 
     @DeleteMapping("/delete")
     public ResponseEntity<String> deleteEditorial(@RequestParam Long id) {
-        EditorialDto editorial = editorialService.find(id);
-
-        if (editorial == null) {
-            String res = "Editorial with ID " + id + " not found";
-            return new ResponseEntity<>(res, HttpStatus.NOT_FOUND);
+        if (editorialService.find(id) == null) {
+            return new ResponseEntity<>("Editorial with ID " + id + " not found", HttpStatus.NOT_FOUND);
         }
 
-        editorial.setIsEnabled(false);
-
-        editorialService.update(id, editorial);
-
-        String res = "Editorial '" + editorial.getName() + "' was deleted successfully";
-
-        return new ResponseEntity<>(res, HttpStatus.OK);
+        return ResponseEntity.ok(editorialService.delete(id));
     }
     /* DELETE http://localhost:8080/editorials/delete?id=1 */
 
     @PatchMapping("/restore")
     public ResponseEntity<String> restoreEditorial(@RequestParam Long id) {
-        EditorialDto editorial = editorialService.find(id);
-
-        if (editorial == null) {
-            String res = "Editorial with ID " + id + " not found";
-            return new ResponseEntity<>(res, HttpStatus.NOT_FOUND);
+        if (editorialService.find(id) == null) {
+            return new ResponseEntity<>("Editorial with ID " + id + " not found", HttpStatus.NOT_FOUND);
         }
 
-        editorial.setIsEnabled(true);
-
-        editorialService.update(id, editorial);
-
-        String res = "Editorial '" + editorial.getName() + "' was restored successfully";
-
-        return new ResponseEntity<>(res, HttpStatus.OK);
+        return ResponseEntity.ok(editorialService.restore(id));
     }
     /* PUT http://localhost:8080/editorials/restore?id=1 */
 

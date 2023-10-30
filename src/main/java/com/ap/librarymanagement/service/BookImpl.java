@@ -5,6 +5,7 @@ import com.ap.librarymanagement.mapper.MapperBook;
 import com.ap.librarymanagement.model.Book;
 import com.ap.librarymanagement.repository.BookRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BookImpl implements IBook {
 
+    @Autowired
     private final BookRepository bookRepository;
 
     @Override

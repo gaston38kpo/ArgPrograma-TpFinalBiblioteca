@@ -5,6 +5,7 @@ import com.ap.librarymanagement.mapper.MapperEditorial;
 import com.ap.librarymanagement.model.Editorial;
 import com.ap.librarymanagement.repository.EditorialRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class EditorialImpl implements IEditorial {
 
+    @Autowired
     private final EditorialRepository editorialRepository;
 
     @Override

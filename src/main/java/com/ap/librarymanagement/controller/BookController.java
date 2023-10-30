@@ -2,7 +2,6 @@ package com.ap.librarymanagement.controller;
 
 
 import com.ap.librarymanagement.dto.BookDto;
-import com.ap.librarymanagement.dto.BookDto;
 import com.ap.librarymanagement.service.BookImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -95,39 +94,21 @@ public class BookController {
 
     @DeleteMapping("/delete")
     public ResponseEntity<String> deleteBook(@RequestParam Long id) {
-        BookDto book = bookService.find(id);
-
-        if (book == null) {
-            String res = "Book with ID " + id + " not found";
-            return new ResponseEntity<>(res, HttpStatus.NOT_FOUND);
+        if (bookService.find(id) == null) {
+            return new ResponseEntity<>("Book with ID " + id + " not found", HttpStatus.NOT_FOUND);
         }
 
-        book.setIsEnabled(false);
-
-        bookService.update(id, book);
-
-        String res = "Book '" + book.getTitle() + "' was deleted successfully";
-
-        return new ResponseEntity<>(res, HttpStatus.OK);
+        return ResponseEntity.ok(bookService.delete(id));
     }
     /* DELETE http://localhost:8080/books/delete?id=1 */
 
     @PatchMapping("/restore")
     public ResponseEntity<String> restoreBook(@RequestParam Long id) {
-        BookDto book = bookService.find(id);
-
-        if (book == null) {
-            String res = "Book with ID " + id + " not found";
-            return new ResponseEntity<>(res, HttpStatus.NOT_FOUND);
+        if (bookService.find(id) == null) {
+            return new ResponseEntity<>("Book with ID " + id + " not found", HttpStatus.NOT_FOUND);
         }
 
-        book.setIsEnabled(true);
-
-        bookService.update(id, book);
-
-        String res = "Book '" + book.getTitle() + "' was restored successfully";
-
-        return new ResponseEntity<>(res, HttpStatus.OK);
+        return ResponseEntity.ok(bookService.restore(id));
     }
     /* PUT http://localhost:8080/books/restore?id=1 */
 

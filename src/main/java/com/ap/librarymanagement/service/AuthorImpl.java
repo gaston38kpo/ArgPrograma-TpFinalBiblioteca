@@ -5,6 +5,7 @@ import com.ap.librarymanagement.mapper.MapperAuthor;
 import com.ap.librarymanagement.model.Author;
 import com.ap.librarymanagement.repository.AuthorRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class AuthorImpl implements IAuthor {
 
+    @Autowired
     private final AuthorRepository authorRepository;
 
     @Override

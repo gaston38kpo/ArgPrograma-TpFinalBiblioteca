@@ -1,6 +1,5 @@
 package com.ap.librarymanagement.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,13 +19,7 @@ public class Author {
     private String name;
     private Boolean isEnabled;
 
-    @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-            },
-            mappedBy = "authorList")
-    @JsonIgnore
+    @ManyToMany(mappedBy = "authorList")
     private Set<Book> bookList = new HashSet<>();
 
     public Author() {

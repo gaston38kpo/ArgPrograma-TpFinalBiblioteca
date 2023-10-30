@@ -2,7 +2,6 @@ package com.ap.librarymanagement.controller;
 
 
 import com.ap.librarymanagement.dto.AuthorDto;
-import com.ap.librarymanagement.model.Book;
 import com.ap.librarymanagement.service.AuthorImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -10,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequiredArgsConstructor
@@ -88,39 +86,21 @@ public class AuthorController {
 
     @DeleteMapping("/delete")
     public ResponseEntity<String> deleteAuthor(@RequestParam Long id) {
-        AuthorDto author = authorService.find(id);
-
-        if (author == null) {
-            String res = "Author with ID " + id + " not found";
-            return new ResponseEntity<>(res, HttpStatus.NOT_FOUND);
+        if (authorService.find(id) == null) {
+            return new ResponseEntity<>("Author with ID " + id + " not found", HttpStatus.NOT_FOUND);
         }
 
-        author.setIsEnabled(false);
-
-        authorService.update(id, author);
-
-        String res = "Author '" + author.getName() + "' was deleted successfully";
-
-        return new ResponseEntity<>(res, HttpStatus.OK);
+        return ResponseEntity.ok(authorService.delete(id));
     }
     /* DELETE http://localhost:8080/authors/delete?id=1 */
 
     @PatchMapping("/restore")
     public ResponseEntity<String> restoreAuthor(@RequestParam Long id) {
-        AuthorDto author = authorService.find(id);
-
-        if (author == null) {
-            String res = "Author with ID " + id + " not found";
-            return new ResponseEntity<>(res, HttpStatus.NOT_FOUND);
+        if (authorService.find(id) == null) {
+            return new ResponseEntity<>("Author with ID " + id + " not found", HttpStatus.NOT_FOUND);
         }
 
-        author.setIsEnabled(true);
-
-        authorService.update(id, author);
-
-        String res = "Author '" + author.getName() + "' was restored successfully";
-
-        return new ResponseEntity<>(res, HttpStatus.OK);
+        return ResponseEntity.ok(authorService.restore(id));
     }
     /* PUT http://localhost:8080/authors/restore?id=1 */
 

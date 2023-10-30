@@ -2,28 +2,16 @@ package com.ap.librarymanagement.mapper;
 
 import com.ap.librarymanagement.dto.EditorialDto;
 import com.ap.librarymanagement.model.Editorial;
+import org.modelmapper.ModelMapper;
 
 public class MapperEditorial {
+    private static final ModelMapper modelMapper = new ModelMapper();
 
     public static EditorialDto toDto(Editorial editorial) {
-        EditorialDto EditorialDto = new EditorialDto();
-
-        EditorialDto.setId(editorial.getId());
-        EditorialDto.setName(editorial.getName());
-        EditorialDto.setIsEnabled(editorial.getIsEnabled());
-        EditorialDto.setBookList(editorial.getBookList());
-
-        return EditorialDto;
+        return modelMapper.map(editorial, EditorialDto.class);
     }
 
-    public static Editorial toEntity(EditorialDto editorialDto) {
-        Editorial Editorial = new Editorial();
-
-        Editorial.setId(editorialDto.getId());
-        Editorial.setName(editorialDto.getName());
-        Editorial.setIsEnabled(editorialDto.getIsEnabled());
-        Editorial.setBookList(editorialDto.getBookList());
-
-        return Editorial;
+    public static Editorial toEntity(EditorialDto authorDto) {
+        return modelMapper.map(authorDto, Editorial.class);
     }
 }
