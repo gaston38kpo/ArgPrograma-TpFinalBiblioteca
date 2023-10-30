@@ -5,6 +5,7 @@ import com.ap.librarymanagement.model.Editorial;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,6 +13,7 @@ import java.util.Set;
 @Builder
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class BookDto {
     private Long id;
     private Long isbn;
@@ -23,8 +25,4 @@ public class BookDto {
     private Boolean isEnabled;
     private Set<Author> authorList;
     private Editorial editorial;
-
-    public BookDto() {
-        this.authorList = new HashSet<>();
-    }
 }
