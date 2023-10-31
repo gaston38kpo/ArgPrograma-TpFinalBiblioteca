@@ -21,8 +21,8 @@ Este proyecto es una aplicación web para gestionar una biblioteca. Permite regi
 2. Crear una base de datos MySQL llamada `biblioteca_ap`
 3. Modificar el archivo `application.properties` con las credenciales de la base de datos
 4. Iniciar la aplicación
-5. Ejecutar el Script sql para rellenar la db con datos de prueba
-6. Acceder a la aplicación en `http://localhost:8080` o usar el json de postman
+5. Ejecutar el Script sql `biblioteca_ap.sql` para rellenar la db con datos de prueba
+6. Acceder a la aplicación en `http://localhost:8080` o usar el json de postman `Biblioteca AP.postman_collection.json`
 
 
 
