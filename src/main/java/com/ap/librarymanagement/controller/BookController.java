@@ -117,7 +117,6 @@ public class BookController {
             "id": 4,
             "name": "Emily Davis",
             "isEnabled": true,
-            "bookList": []
         }
     ],
     "editorial": {
@@ -134,7 +133,9 @@ public class BookController {
             return new ResponseEntity<>("Book with ID " + id + " not found", HttpStatus.NOT_FOUND);
         }
 
-        return ResponseEntity.ok(bookService.delete(id));
+        bookService.delete(id);
+
+        return new ResponseEntity<>("Book with ID: " + id + " was successfully removed", HttpStatus.OK);
     }
     /* DELETE http://localhost:8080/books/delete?id=1 */
 
@@ -144,7 +145,9 @@ public class BookController {
             return new ResponseEntity<>("Book with ID " + id + " not found", HttpStatus.NOT_FOUND);
         }
 
-        return ResponseEntity.ok(bookService.restore(id));
+        bookService.restore(id);
+
+        return ResponseEntity.ok("Book with ID: " + id + " was successfully restored");
     }
     /* PUT http://localhost:8080/books/restore?id=1 */
 

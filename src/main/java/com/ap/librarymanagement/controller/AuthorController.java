@@ -1,6 +1,5 @@
 package com.ap.librarymanagement.controller;
 
-
 import com.ap.librarymanagement.dto.AuthorDto;
 import com.ap.librarymanagement.service.AuthorImpl;
 import lombok.RequiredArgsConstructor;
@@ -85,7 +84,9 @@ public class AuthorController {
             return new ResponseEntity<>("Author with ID " + id + " not found", HttpStatus.NOT_FOUND);
         }
 
-        return ResponseEntity.ok(authorService.delete(id));
+        authorService.delete(id);
+
+        return ResponseEntity.ok("Author with ID: " + id + " was successfully removed");
     }
     /* DELETE http://localhost:8080/authors/delete?id=1 */
 
@@ -95,7 +96,9 @@ public class AuthorController {
             return new ResponseEntity<>("Author with ID " + id + " not found", HttpStatus.NOT_FOUND);
         }
 
-        return ResponseEntity.ok(authorService.restore(id));
+        authorService.restore(id);
+
+        return ResponseEntity.ok("Author with ID: " + id + " was successfully restored");
     }
     /* PUT http://localhost:8080/authors/restore?id=1 */
 

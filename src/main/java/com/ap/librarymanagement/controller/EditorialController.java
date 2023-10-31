@@ -85,7 +85,9 @@ public class EditorialController {
             return new ResponseEntity<>("Editorial with ID " + id + " not found", HttpStatus.NOT_FOUND);
         }
 
-        return ResponseEntity.ok(editorialService.delete(id));
+        editorialService.delete(id);
+
+        return ResponseEntity.ok("Editorial with ID: " + id + " was successfully removed");
     }
     /* DELETE http://localhost:8080/editorials/delete?id=1 */
 
@@ -95,7 +97,9 @@ public class EditorialController {
             return new ResponseEntity<>("Editorial with ID " + id + " not found", HttpStatus.NOT_FOUND);
         }
 
-        return ResponseEntity.ok(editorialService.restore(id));
+        editorialService.restore(id);
+
+        return ResponseEntity.ok("Editorial with ID: " + id + " was successfully restored");
     }
     /* PUT http://localhost:8080/editorials/restore?id=1 */
 
