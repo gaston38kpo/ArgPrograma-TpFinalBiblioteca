@@ -116,7 +116,7 @@ public class BookController {
         {
             "id": 4,
             "name": "Emily Davis",
-            "isEnabled": true,
+            "isEnabled": true
         }
     ],
     "editorial": {
@@ -149,6 +149,6 @@ public class BookController {
 
         return ResponseEntity.ok("Book with ID: " + id + " was successfully restored");
     }
-    /* PUT http://localhost:8080/books/restore?id=1 */
+    /* PATCH http://localhost:8080/books/restore?id=1 */
 
 }

@@ -101,6 +101,6 @@ public class EditorialController {
 
         return ResponseEntity.ok("Editorial with ID: " + id + " was successfully restored");
     }
-    /* PUT http://localhost:8080/editorials/restore?id=1 */
+    /* PATCH http://localhost:8080/editorials/restore?id=1 */
 
 }

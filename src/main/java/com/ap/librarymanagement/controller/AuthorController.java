@@ -100,6 +100,6 @@ public class AuthorController {
 
         return ResponseEntity.ok("Author with ID: " + id + " was successfully restored");
     }
-    /* PUT http://localhost:8080/authors/restore?id=1 */
+    /* PATCH http://localhost:8080/authors/restore?id=1 */
 
 }
